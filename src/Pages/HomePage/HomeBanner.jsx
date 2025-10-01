@@ -16,7 +16,7 @@ function HomeBanner() {
     const desktopInputRef = useRef(null);
     const mobileInputRef = useRef(null);
 
-    const API_URL = "https://backendvimalagro.onrender.com/homebanner";
+    const API_URL = "https://vimalagro-backend.onrender.com/homebanner";
 
     // Fetch existing banners
     const fetchBanners = async () => {

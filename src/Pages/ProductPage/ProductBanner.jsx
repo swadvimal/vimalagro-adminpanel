@@ -16,7 +16,7 @@ function ProductBanner() {
     const desktopInputRef = useRef(null);
     const mobileInputRef = useRef(null);
 
-    const API_URL = "https://backendvimalagro.onrender.com/productbanner";
+    const API_URL = "https://vimalagro-backend.onrender.com/productbanner";
 
     // Fetch existing banners
     const fetchBanners = async () => {

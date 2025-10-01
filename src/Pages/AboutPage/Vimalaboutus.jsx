@@ -3,7 +3,7 @@ import { FaDatabase, FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const API_URL = "https://backendvimalagro.onrender.com/vimalabout";
+const API_URL = "https://vimalagro-backend.onrender.com/vimalabout";
 
 function Vimalaboutus() {
     const [aboutImage, setAboutImage] = useState(null);

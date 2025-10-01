@@ -26,7 +26,7 @@ function Principles() {
     const fetchPrinciples = async () => {
         try {
             setFetching(true);
-            const res = await fetch("https://backendvimalagro.onrender.com/principle");
+            const res = await fetch("https://vimalagro-backend.onrender.com/principle");
             const data = await res.json();
             setTableData(data);
         } catch (error) {
@@ -90,11 +90,11 @@ function Principles() {
             if (formData.principleimage) formDataObj.append("principleimage", formData.principleimage);
             if (formData.smallpngimage) formDataObj.append("smallpngimage", formData.smallpngimage);
 
-            let url = "https://backendvimalagro.onrender.com/principle";
+            let url = "https://vimalagro-backend.onrender.com/principle";
             let method = "POST";
 
             if (editingId) {
-                url = `https://backendvimalagro.onrender.com/principle/${editingId}`;
+                url = `https://vimalagro-backend.onrender.com/principle/${editingId}`;
                 method = "PUT";
             }
 
@@ -167,7 +167,7 @@ function Principles() {
         if (!result.isConfirmed) return;
 
         try {
-            const res = await fetch(`https://backendvimalagro.onrender.com/principle/${id}`, { method: "DELETE" });
+            const res = await fetch(`https://vimalagro-backend.onrender.com/principle/${id}`, { method: "DELETE" });
             if (res.ok) {
                 Swal.fire({ icon: 'success', title: "Deleted!", text: "Principle deleted successfully.", showConfirmButton: false, timer: 2000 });
                 fetchPrinciples();

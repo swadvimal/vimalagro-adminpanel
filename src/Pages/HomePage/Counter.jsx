@@ -17,7 +17,7 @@ function Counter() {
 
     useEffect(() => {
         setFetching(true);
-        fetch("https://backendvimalagro.onrender.com/counter")
+        fetch("https://vimalagro-backend.onrender.com/counter")
             .then((res) => res.json())
             .then((data) => {
                 if (Array.isArray(data)) {
@@ -56,7 +56,7 @@ function Counter() {
         const data = { value: [counters] };
 
         try {
-            const res = await fetch("https://backendvimalagro.onrender.com/counter", {
+            const res = await fetch("https://vimalagro-backend.onrender.com/counter", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
@@ -109,7 +109,7 @@ function Counter() {
         }
 
         try {
-            const res = await fetch(`https://backendvimalagro.onrender.com/counter/${editId}`, {
+            const res = await fetch(`https://vimalagro-backend.onrender.com/counter/${editId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ value: [counters] }),

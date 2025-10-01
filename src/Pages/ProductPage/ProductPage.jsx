@@ -95,7 +95,7 @@ function ProductPage() {
         setFetching(true);
         try {
             const res = await axios.get(
-                "https://backendvimalagro.onrender.com/api/products"
+                "https://vimalagro-backend.onrender.com/api/products"
             );
             setProducts(res.data);
         } catch (err) {
@@ -561,7 +561,7 @@ function ProductPage() {
 
             if (editingProductId) {
                 await axios.put(
-                    `https://backendvimalagro.onrender.com/api/products/${editingProductId}`,
+                    `https://vimalagro-backend.onrender.com/api/products/${editingProductId}`,
                     formData,
                     { headers: { "Content-Type": "multipart/form-data" } }
                 );
@@ -576,7 +576,7 @@ function ProductPage() {
                 });
             } else {
                 await axios.post(
-                    "https://backendvimalagro.onrender.com/api/products/add",
+                    "https://vimalagro-backend.onrender.com/api/products/add",
                     formData,
                     { headers: { "Content-Type": "multipart/form-data" } }
                 );
@@ -658,7 +658,7 @@ function ProductPage() {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`https://backendvimalagro.onrender.com/api/products/${id}`);
+                await axios.delete(`https://vimalagro-backend.onrender.com/api/products/${id}`);
                 fetchProducts();
                 Swal.fire({
                     title: "Deleted!",

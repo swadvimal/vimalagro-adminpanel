@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { FaDatabase, FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
-const API_URL = "https://backendvimalagro.onrender.com/categories";
+const API_URL = "https://vimalagro-backend.onrender.com/categories";
 function OurCategory() {
     const [categoriesData, setCategoriesData] = useState([]);
     const [imagePreviews, setImagePreviews] = useState([]);
@@ -31,7 +31,7 @@ function OurCategory() {
     // Fetch products for select dropdown
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await axios.get("https://backendvimalagro.onrender.com/api/products");
+            const res = await axios.get("https://vimalagro-backend.onrender.com/api/products");
             setProducts(res.data);
         };
         fetchProducts();

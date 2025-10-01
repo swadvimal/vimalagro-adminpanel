@@ -16,7 +16,7 @@ function Testimonial() {
   const [editId, setEditId] = useState(null);
   const fileInputRef = useRef(null);
 
-  const API_URL = "https://backendvimalagro.onrender.com/testimonial";
+  const API_URL = "https://vimalagro-backend.onrender.com/testimonial";
 
   // Fetch testimonials from API
   const fetchTestimonials = async () => {

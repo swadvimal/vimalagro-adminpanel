@@ -9,7 +9,7 @@ function ProductAdminToggle() {
 
     useEffect(() => {
         axios
-            .get("https://backendvimalagro.onrender.com/view/btn")
+            .get("https://vimalagro-backend.onrender.com/view/btn")
             .then((res) => {
                 setIsVisible(res.data.isVisible);
             })
@@ -21,7 +21,7 @@ function ProductAdminToggle() {
         setIsVisible(newState);
 
         try {
-            await axios.post("https://backendvimalagro.onrender.com/view/btn", {
+            await axios.post("https://vimalagro-backend.onrender.com/view/btn", {
                 isVisible: newState,
             });
             console.log("Updated ✅", newState);

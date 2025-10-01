@@ -4,7 +4,7 @@ import { FaDatabase, FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import ExtraSubHeading from "./ExtraSubHeading";
 
-const API_URL = "https://backendvimalagro.onrender.com/api/extrasubproducts";
+const API_URL = "https://vimalagro-backend.onrender.com/api/extrasubproducts";
 
 function ExtraSubProduct() {
 
@@ -34,7 +34,7 @@ function ExtraSubProduct() {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await axios.get("https://backendvimalagro.onrender.com/api/products");
+            const res = await axios.get("https://vimalagro-backend.onrender.com/api/products");
             setProducts(res.data);
         };
         fetchProducts();

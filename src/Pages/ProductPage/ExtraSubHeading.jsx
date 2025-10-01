@@ -3,7 +3,7 @@ import axios from "axios";
 import { FaPlus } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-const API_URL = "https://backendvimalagro.onrender.com/api/heading";
+const API_URL = "https://vimalagro-backend.onrender.com/api/heading";
 
 function ExtraSubHeading() {
 
@@ -22,7 +22,7 @@ function ExtraSubHeading() {
         const fetchProducts = async () => {
             try {
                 const res = await axios.get(
-                    "https://backendvimalagro.onrender.com/api/products"
+                    "https://vimalagro-backend.onrender.com/api/products"
                 );
                 setProducts(res.data);
             } catch (err) {

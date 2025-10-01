@@ -57,7 +57,7 @@ function BlogForm() {
     const fetchBlogs = async () => {
         setFetching(true);
         try {
-            const res = await axios.get("https://backendvimalagro.onrender.com/api/blogs");
+            const res = await axios.get("https://vimalagro-backend.onrender.com/api/blogs");
             setBlogs(res.data);
         } catch (err) {
             console.error("Error fetching blogs", err);
@@ -310,7 +310,7 @@ function BlogForm() {
             });
 
             if (editingBlogId) {
-                await axios.put(`https://backendvimalagro.onrender.com/api/blogs/${editingBlogId}`, data, {
+                await axios.put(`https://vimalagro-backend.onrender.com/api/blogs/${editingBlogId}`, data, {
                     headers: { "Content-Type": "multipart/form-data" },
                 });
                 Swal.fire({
@@ -321,7 +321,7 @@ function BlogForm() {
                     showConfirmButton: false
                 });
             } else {
-                await axios.post("https://backendvimalagro.onrender.com/api/blogs/add", data, {
+                await axios.post("https://vimalagro-backend.onrender.com/api/blogs/add", data, {
                     headers: { "Content-Type": "multipart/form-data" },
                 });
                 Swal.fire({
@@ -388,7 +388,7 @@ function BlogForm() {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    await axios.delete(`https://backendvimalagro.onrender.com/api/blogs/${id}`);
+                    await axios.delete(`https://vimalagro-backend.onrender.com/api/blogs/${id}`);
                     Swal.fire({
                         title: "Deleted!",
                         text: "✅ Blog has been deleted.",

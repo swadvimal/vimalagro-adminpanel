@@ -3,7 +3,7 @@ import { FaDatabase, FaPlus, FaTrash, FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axios from "axios";
 
-const API_URL = "https://backendvimalagro.onrender.com/ourstory";
+const API_URL = "https://vimalagro-backend.onrender.com/ourstory";
 
 function Ourstory() {
 

@@ -20,7 +20,7 @@ function HomeAbout() {
     const fetchData = () => {
         setFetching(true);
         axios
-            .get("https://backendvimalagro.onrender.com/aboutus")
+            .get("https://vimalagro-backend.onrender.com/aboutus")
             .then((res) => {
                 if (res.data && Array.isArray(res.data)) {
                     setTableData(res.data);
@@ -87,7 +87,7 @@ function HomeAbout() {
 
             if (isEditing && editId) {
                 await axios.put(
-                    `https://backendvimalagro.onrender.com/aboutus/${editId}`,
+                    `https://vimalagro-backend.onrender.com/aboutus/${editId}`,
                     formData,
                     {
                         headers: { "Content-Type": "multipart/form-data" },
@@ -105,7 +105,7 @@ function HomeAbout() {
                 setIsEditing(false);
                 setEditId(null);
             } else {
-                await axios.post("https://backendvimalagro.onrender.com/aboutus", formData, {
+                await axios.post("https://vimalagro-backend.onrender.com/aboutus", formData, {
                     headers: { "Content-Type": "multipart/form-data" },
                 });
 
@@ -150,7 +150,7 @@ function HomeAbout() {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    await axios.delete(`https://backendvimalagro.onrender.com/aboutus/${id}`);
+                    await axios.delete(`https://vimalagro-backend.onrender.com/aboutus/${id}`);
                     fetchData();
                     Swal.fire({
                         title: "Deleted!",

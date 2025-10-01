@@ -12,7 +12,7 @@ function Faq() {
 
     const fetchFaqs = () => {
         setFetching(true);
-        fetch("https://backendvimalagro.onrender.com/faq")
+        fetch("https://vimalagro-backend.onrender.com/faq")
             .then((res) => res.json())
             .then((data) => {
                 if (data && Array.isArray(data.data)) {
@@ -44,11 +44,11 @@ function Faq() {
         }
 
         try {
-            let url = "https://backendvimalagro.onrender.com/faq";
+            let url = "https://vimalagro-backend.onrender.com/faq";
             let method = "POST";
 
             if (editId) {
-                url = `https://backendvimalagro.onrender.com/faq/${editId}`;
+                url = `https://vimalagro-backend.onrender.com/faq/${editId}`;
                 method = "PUT";
             }
 
@@ -114,7 +114,7 @@ function Faq() {
             if (result.isConfirmed) {
                 try {
                     const res = await fetch(
-                        `https://backendvimalagro.onrender.com/faq/${id}`,
+                        `https://vimalagro-backend.onrender.com/faq/${id}`,
                         { method: "DELETE" }
                     );
                     const data = await res.json();
