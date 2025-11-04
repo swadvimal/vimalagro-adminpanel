@@ -34,7 +34,7 @@ function ProductPage() {
     howToMakeBanner: "",
     howToMakeBannerMobile: "", // ✅ new
     recipes: [],
-    displayOrder:""
+    displayOrder: "",
   });
 
   const [files, setFiles] = useState({
@@ -51,6 +51,7 @@ function ProductPage() {
     subproductName: "",
     subproductImg: "",
     description: "",
+    displayOrder:"",
     weight: "",
   });
   const [editingSubIndex, setEditingSubIndex] = useState(null);
@@ -95,9 +96,7 @@ function ProductPage() {
   const fetchProducts = async () => {
     setFetching(true);
     try {
-      const res = await axios.get(
-        "https://vimalagro-backend.onrender.com/api/products"
-      );
+      const res = await axios.get("http://127.0.0.1:8000/api/products");
       setProducts(res.data);
     } catch (err) {
       console.error("Error fetching products", err);
@@ -148,6 +147,7 @@ function ProductPage() {
       !sub.subproductName.trim() ||
       !sub.subproductImg ||
       !sub.description.trim() ||
+      !sub.displayOrder ||
       !sub.weight
     ) {
       return { allRequired: true };
@@ -299,6 +299,7 @@ function ProductPage() {
       subproductName: "",
       subproductImg: "",
       description: "",
+      displayOrder:"",
       weight: "",
     });
     setEditingSubIndex(null);
@@ -523,7 +524,7 @@ function ProductPage() {
     try {
       const formData = new FormData();
       formData.append("productName", product.productName);
-      formData.append("displayOrder", product.displayOrder)
+      formData.append("displayOrder", product.displayOrder);
       formData.append("productSizes", JSON.stringify(product.productSizes));
       formData.append("subproducts", JSON.stringify(product.subproducts));
       formData.append("recipes", JSON.stringify(product.recipes));
@@ -566,7 +567,7 @@ function ProductPage() {
 
       if (editingProductId) {
         await axios.put(
-          `https://vimalagro-backend.onrender.com/api/products/${editingProductId}`,
+          `http://127.0.0.1:8000/api/products/${editingProductId}`,
           formData,
           { headers: { "Content-Type": "multipart/form-data" } }
         );
@@ -580,11 +581,9 @@ function ProductPage() {
           icon: "success",
         });
       } else {
-        await axios.post(
-          "https://vimalagro-backend.onrender.com/api/products/add",
-          formData,
-          { headers: { "Content-Type": "multipart/form-data" } }
-        );
+        await axios.post("http://127.0.0.1:8000/api/products/add", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
 
         // 🔹 Fetch updated list after add
         await fetchProducts();
@@ -609,7 +608,7 @@ function ProductPage() {
         howToMakeBanner: "",
         howToMakeBannerMobile: "", // ✅
         recipes: [],
-        displayOrder:""
+        displayOrder: "",
       });
       setFiles({
         productBanner: null,
@@ -665,9 +664,7 @@ function ProductPage() {
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(
-          `https://vimalagro-backend.onrender.com/api/products/${id}`
-        );
+        await axios.delete(`http://127.0.0.1:8000/api/products/${id}`);
         fetchProducts();
         Swal.fire({
           title: "Deleted!",
@@ -1033,6 +1030,22 @@ function ProductPage() {
               ></textarea>
             </div>
             <div className="w-100 w-lg-50 w-md-50 mt-2">
+              <label className="d-block fw-bold">Display Order</label>
+              <input
+                  type="text"
+                  name="displayOrder"
+                  placeholder="Enter Display Order"
+                  value={sub.displayOrder}
+                  onChange={handleSubChange}
+                  className={`mt-1 w-100 form-control border ${
+                    subSubmitted && subErrors.displayOrder
+                      ? "border-danger"
+                      : "border-secondary"
+                  }`}
+                  disabled={formSubmitting}
+                />
+            </div>
+            <div className="w-100 w-lg-50 w-md-50 mt-2">
               <label className="d-block fw-bold">SubProduct Image</label>
               <input
                 type="file"
@@ -1132,6 +1145,12 @@ function ProductPage() {
                         className="text-white"
                         style={{ width: "10%", background: "var(--red)" }}
                       >
+                        Display Order
+                      </th>
+                      <th
+                        className="text-white"
+                        style={{ width: "10%", background: "var(--red)" }}
+                      >
                         Action
                       </th>
                     </tr>
@@ -1159,6 +1178,7 @@ function ProductPage() {
                           <td style={{ width: "20%" }}>{s.subproductName}</td>
                           <td style={{ width: "40%" }}>{s.description}</td>
                           <td style={{ width: "10%" }}>{s.weight}</td>
+                          <td style={{ width: "10%" }}>{s.displayOrder}</td>
                           <td style={{ width: "10%" }}>
                             <div className="d-flex flex-column flex-md-row flex-lg-row justify-content-center align-items-center">
                               <FaEdit
